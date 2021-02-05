@@ -35,11 +35,6 @@
             padding-bottom: 10px;
         }
 
-        .sup {
-            vertical-align: super;
-            font-size: small;
-        }
-
         /* questions */
         .questiontext {
             padding-top: 5px;
@@ -64,13 +59,17 @@
         .risk {
             font-weight: bold;
         }
+
+        .references {
+            justify-content: center;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="row title">
-            KP SOTR Screening Tool
+            KP Solid Organ Transplant Screening Tool
         </div>
         <div class="question row" data-question="caucasian">
             <div class="questiontext col">Caucasian?</div>
@@ -126,6 +125,10 @@
             <p>Screen within <span class='risk' id='risk-time'></span> <span id='risk-known'></span> by <span class='risk' id='risk-specialty'></span></p>
             <p>Average 5-yr skin cancer risk: <span class='risk' id='risk-5yrs'></span></p>
             <p>Average 10-yr skin cancer risk: <span class='risk' id='risk-10yrs'></span></p>
+        </div>
+        <hr />
+        <div class='row references'>
+            References:&nbsp;<a target="_blank" href="https://doi.org/10.1111/tri.13493">doi:10.1111/tri.13493</a>,&nbsp;<a target="_blank" href="https://doi.org/10.1111/tri.13520">doi:10.1111/tri.13520</a>
         </div>
     </div>
 
