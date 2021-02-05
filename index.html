@@ -122,7 +122,7 @@
         <hr />
         <div class='results'>
             <p>Risk is <span class='risk' id='risk-level'></span></p>
-            <p>Screen within <span class='risk' id='risk-time'></span> <span id='risk-known'></span> by <span class='risk' id='risk-specialty'></span></p>
+            <p>Initial screen within <span class='risk' id='risk-time'></span> <span id='risk-known'></span> in <span class='risk' id='risk-specialty'></span>, follow up <span class='risk' id='risk-followup'></span></p>
             <p>Average 5-yr skin cancer risk: <span class='risk' id='risk-5yrs'></span></p>
             <p>Average 10-yr skin cancer risk: <span class='risk' id='risk-10yrs'></span></p>
         </div>
@@ -136,11 +136,11 @@
         var questions = {};
 
         var riskInfos = {
-            "LOW": ["2 years", "1.01%", "2.33%", "AFM", "of transplant"],
-            "MEDIUM": ["1 year", "6.15%", "13.73%", "AFM", "of transplant"],
-            "HIGH": ["1 year", "15.14%", "31.75%", "Dermatology", "of transplant"],
-            "VERY HIGH": ["6 months", "44.75%", "74.85%", "Dermatology", "of transplant"],
-            "UNKNOWN": ["6 months", "N/A", "N/A", "Dermatology", ""],
+            "LOW": ["LOW", "2 years", "1.01%", "2.33%", "AFM", "of transplant", "annually"],
+            "MEDIUM": ["MEDIUM", "1 year", "6.15%", "13.73%", "AFM", "of transplant", "annually"],
+            "HIGH": ["HIGH", "1 year", "15.14%", "31.75%", "Dermatology", "of transplant", "per derm MD"],
+            "VERY HIGH": ["VERY HIGH", "6 months", "44.75%", "74.85%", "Dermatology", "of transplant", "per derm MD"],
+            "UNKNOWN": ["VERY HIGH", "6 months", "N/A", "N/A", "Dermatology", "", "per derm MD"],
         }
 
         function setAnswer(obj) {
@@ -157,12 +157,13 @@
         function generateResults() {
             var riskLevel = calculateRisk();
             var riskInfo = riskInfos[riskLevel];
-            document.getElementById("risk-level").innerText = riskLevel;
-            document.getElementById("risk-time").innerText = riskInfo[0];
-            document.getElementById("risk-5yrs").innerText = riskInfo[1];
-            document.getElementById("risk-10yrs").innerText = riskInfo[2];
-            document.getElementById("risk-specialty").innerText = riskInfo[3];
-            document.getElementById("risk-known").innerText = riskInfo[4];
+            document.getElementById("risk-level").innerText = riskInfo[0];;
+            document.getElementById("risk-time").innerText = riskInfo[1];
+            document.getElementById("risk-5yrs").innerText = riskInfo[2];
+            document.getElementById("risk-10yrs").innerText = riskInfo[3];
+            document.getElementById("risk-specialty").innerText = riskInfo[4];
+            document.getElementById("risk-known").innerText = riskInfo[5];
+            document.getElementById("risk-followup").innerText = riskInfo[6];
         }
 
         function calculateRisk() {
