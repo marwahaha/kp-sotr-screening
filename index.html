@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>KP SOTR Screening Tool</title>
+    <title>SUNTRAC* SOTR KP Skin Screening Tool</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <meta charset="UTF-8">
@@ -69,7 +69,7 @@
 <body>
     <div class="container">
         <div class="row title">
-            KP Solid Organ Transplant Screening Tool
+            SUNTRAC* SOTR KP Skin Screening Tool
         </div>
         <div class="question row" data-question="caucasian">
             <div class="questiontext col">Caucasian?</div>
@@ -121,26 +121,28 @@
         <hr />
         <hr />
         <div class='results'>
-            <p>Risk is <span class='risk' id='risk-level'></span></p>
-            <p>Initial screen within <span class='risk' id='risk-time'></span> <span id='risk-known'></span> in <span class='risk' id='risk-specialty'></span>, follow up <span class='risk' id='risk-followup'></span></p>
+            <p>Risk of skin cancer is <span class='risk' id='risk-level'></span></p>
+            <p>Skin cancer screenings in <span class='risk' id='risk-specialty'></span><span id='risk-known'></span></p>
             <p>Average 5-yr skin cancer risk: <span class='risk' id='risk-5yrs'></span></p>
             <p>Average 10-yr skin cancer risk: <span class='risk' id='risk-10yrs'></span></p>
+            <p class='references'>
+                References:&nbsp;<a target="_blank"
+                    href="https://doi.org/10.1111/tri.13493">doi:10.1111/tri.13493</a>,&nbsp;<a target="_blank"
+                    href="https://doi.org/10.1111/tri.13520">doi:10.1111/tri.13520</a>
+            </p>
         </div>
         <hr />
-        <div class='row references'>
-            References:&nbsp;<a target="_blank" href="https://doi.org/10.1111/tri.13493">doi:10.1111/tri.13493</a>,&nbsp;<a target="_blank" href="https://doi.org/10.1111/tri.13520">doi:10.1111/tri.13520</a>
-        </div>
     </div>
 
     <script>
         var questions = {};
 
         var riskInfos = {
-            "LOW": ["LOW", "2 years", "1.01%", "2.33%", "AFM", "of transplant", "annually"],
-            "MEDIUM": ["MEDIUM", "1 year", "6.15%", "13.73%", "AFM", "of transplant", "annually"],
-            "HIGH": ["HIGH", "1 year", "15.14%", "31.75%", "Dermatology", "of transplant", "per derm MD"],
-            "VERY HIGH": ["VERY HIGH", "6 months", "44.75%", "74.85%", "Dermatology", "of transplant", "per derm MD"],
-            "UNKNOWN": ["VERY HIGH", "6 months", "N/A", "N/A", "Dermatology", "", "per derm MD"],
+            "LOW": ["LOW", "", "1.01%", "2.33%", "PRIMARY CARE", "", ""],
+            "MEDIUM": ["MEDIUM", "", "6.15%", "13.73%", "PRIMARY CARE", "", ""],
+            "HIGH": ["HIGH", "", "15.14%", "31.75%", "DERMATOLOGY", " (to outreach patient directly)", "per derm MD"],
+            "VERY HIGH": ["VERY HIGH", "", "44.75%", "74.85%", "DERMATOLOGY", " (to outreach patient directly)", "per derm MD"],
+            "UNKNOWN": ["VERY HIGH", "", "N/A", "N/A", "DERMATOLOGY", " (to outreach patient directly)", "per derm MD"],
         }
 
         function setAnswer(obj) {
@@ -158,12 +160,12 @@
             var riskLevel = calculateRisk();
             var riskInfo = riskInfos[riskLevel];
             document.getElementById("risk-level").innerText = riskInfo[0];;
-            document.getElementById("risk-time").innerText = riskInfo[1];
+            // document.getElementById("risk-time").innerText = riskInfo[1];
             document.getElementById("risk-5yrs").innerText = riskInfo[2];
             document.getElementById("risk-10yrs").innerText = riskInfo[3];
             document.getElementById("risk-specialty").innerText = riskInfo[4];
             document.getElementById("risk-known").innerText = riskInfo[5];
-            document.getElementById("risk-followup").innerText = riskInfo[6];
+            // document.getElementById("risk-followup").innerText = riskInfo[6];
         }
 
         function calculateRisk() {
