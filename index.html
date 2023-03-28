@@ -49,7 +49,7 @@
         }
 
         /* results */
-        .results {
+        #results {
             text-align: center;
             border: 1px solid black;
             padding: 10px;
@@ -116,21 +116,34 @@
         </div>
         <hr />
         <hr />
-        <div class='results'>
-            <p>Risk of skin cancer is <span class='risk' id='risk-level'></span></p>
-            <p>Skin cancer screenings in <span class='risk' id='risk-specialty'></span><span id='risk-known'></span></p>
-            <p>Average 5-yr skin cancer risk: <span class='risk' id='risk-5yrs'></span></p>
-            <p>Average 10-yr skin cancer risk: <span class='risk' id='risk-10yrs'></span></p>
-            <p>
-            <div><u>References</u></div>
-            <div><a target="_blank" href="https://doi.org/10.1111/tri.13493">doi:10.1111/tri.13493</a></div>
-            <div><a target="_blank" href="https://doi.org/10.1111/tri.13520">doi:10.1111/tri.13520</a></div>
-            </p>
+        <div id='results'>
+            <div style="text-align: right; margin-bottom: -38px">
+                <button onclick="copyResults()" type="button" id="copybutton" class="btn btn-outline-success">Copy
+                    all</button>
+            </div>
+            <span id="resultstocopy">
+                <p>Risk of skin cancer is <span class='risk' id='risk-level'></span></p>
+                <p>Skin cancer screenings in <span class='risk' id='risk-specialty'></span><span id='risk-known'></span>
+                </p>
+                <p>Average 5-yr skin cancer risk: <span class='risk' id='risk-5yrs'></span></p>
+                <p>Average 10-yr skin cancer risk: <span class='risk' id='risk-10yrs'></span></p>
+                <p>
+                    <div><u>References</u></div>
+                    <div><a target="_blank" href="https://doi.org/10.1111/tri.13493">doi:10.1111/tri.13493</a></div>
+                    <div><a target="_blank" href="https://doi.org/10.1111/tri.13520">doi:10.1111/tri.13520</a></div>
+                </p>
+            </span>
         </div>
         <hr />
     </div>
 
     <script>
+        function copyResults() {
+            document.getElementById("copybutton").innerText = "Copied!"
+            setTimeout(function () { document.getElementById("copybutton").innerText = "Copy all" }, 1500);
+            navigator.clipboard.writeText(document.getElementById("resultstocopy").innerText);
+        }
+
         var questions = {};
 
         var riskInfos = {
