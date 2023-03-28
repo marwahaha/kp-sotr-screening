@@ -167,7 +167,7 @@
         function copyResults() {
             document.getElementById("copybutton").innerText = "Copied!"
             setTimeout(function () { document.getElementById("copybutton").innerText = "Copy all" }, 1500);
-            navigator.clipboard.writeText(document.getElementById("resultstocopy").innerText);
+            navigator.clipboard.writeText(document.getElementById("resultstocopy").innerText.replaceAll('\n\n', '\n'));
         }
 
         var questions = {};
