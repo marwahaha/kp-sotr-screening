@@ -59,6 +59,12 @@
         .risk {
             font-weight: bold;
         }
+
+        @media only screen and (max-width: 600px) {
+            #addspaceifsmall {
+                margin-top: 40px;
+            }
+        }
     </style>
 </head>
 
@@ -117,12 +123,12 @@
         <hr />
         <hr />
         <div id='results'>
-            <div style="text-align: right; margin-bottom: -38px">
+            <div style="text-align: right; margin-bottom: -30px;">
                 <button onclick="copyResults()" type="button" id="copybutton" class="btn btn-outline-success">Copy
                     all</button>
             </div>
             <span id="resultstocopy">
-                <p>Risk of skin cancer is <span class='risk' id='risk-level'></span></p>
+                <p id="addspaceifsmall">Risk of skin cancer is <span class='risk' id='risk-level'></span></p>
                 <p>Skin cancer screenings in <span class='risk' id='risk-specialty'></span><span id='risk-known'></span>
                 </p>
                 <p>Average 5-yr skin cancer risk: <span class='risk' id='risk-5yrs'></span></p>
